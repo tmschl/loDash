@@ -17,6 +17,26 @@ const _ = {
     //   return num;
     // }
 
+  },
+  inRange (number, start, end) {
+    let endMem;
+    if (end === undefined) {
+      end = start;
+      start = 0;
+      return true;
+    }
+    if (start > end) {
+      console.log(number, start, end);
+      endMem = start;
+      start = end;
+      end = endMem;
+      console.log(number, start, end);
+      return true;
+    }
+    if (number < start || number > end || number === end) {
+      return false;
+    }
+    return true;
   }
 };
 
