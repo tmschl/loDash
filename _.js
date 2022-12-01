@@ -55,22 +55,61 @@ const _ = {
     return wordArray;
   },
   pad (str, length) { // just add the diff to the end, start there
+    let solutionArray = [];
     let diff;
     length > str.length ? diff = length - str.length : console.log('string is longer');
 
-    if (diff % 2 === 0) {
-      console.log('congrats diff is ', diff);
-      for (let i = 0; i < diff; i++) {
-        console.log('made it here in the loop');
-        str += "-";
-        for (let j = str.length - 1; j >= 0; j--) {
-          str[j] = "poop";
-          console.log('string value', str[j]);
+    // padding loop 
+    if (diff % 2 === 0 && str.length < length) {
+      console.log(str, length);
+      for (let i = 0; i < str.length; i++) {
+
+        //pad the beginning 
+        if (i === 0) {
+          for (let j = 0; j < diff / 2; j++) {
+            solutionArray.push(' ');
+          }
+        }
+
+        // make the array
+        solutionArray.push(str[i]);
+
+        // pad the end
+        if (i === str.length - 1) {
+          for (let j = 0; j < diff / 2; j++) {
+            solutionArray.push(' ');
+          }
+        }
+      } 
+    } else if (diff % 2 === 1 && str.length < length) {
+      diff = Math.trunc(diff / 2);
+      for (let i = 0; i < str.length; i++) {
+
+        //pad the beginning 
+        if (i === 0) {
+          for (let j = 0; j < diff; j++) {
+            solutionArray.push(' ');
+          }
+        }
+
+        // make the array
+        solutionArray.push(str[i]);
+
+        // pad the end
+        if (i === str.length - 1) {
+          for (let j = 0; j < diff + 1; j++) {
+            solutionArray.push(' ');
+          }
         }
       }
+    } else { 
+      return str;
     }
 
-    return str;
+    let solution = solutionArray.join("");
+    console.log(solution);
+
+    return solution;
   } 
 };
 
