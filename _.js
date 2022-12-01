@@ -53,12 +53,28 @@ const _ = {
       }
     }
     return wordArray;
-  }
+  },
+  pad (str, length) { // just add the diff to the end, start there
+    let diff;
+    length > str.length ? diff = length - str.length : console.log('string is longer');
+
+    if (diff % 2 === 0) {
+      console.log('congrats diff is ', diff);
+      for (let i = 0; i < diff; i++) {
+        console.log('made it here in the loop');
+        str += "-";
+        for (let j = str.length - 1; j >= 0; j--) {
+          str[j] = "poop";
+          console.log('string value', str[j]);
+        }
+      }
+    }
+
+    return str;
+  } 
 };
 
-let tim = _.clamp(-10,0,23);
 
-console.log(tim);
 
 // Do not write or modify code below this line.
 module.exports = _;
