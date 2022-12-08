@@ -146,12 +146,33 @@ const _ = {
         return undefined
       }
     }
-    
+  },
+  drop (arr, num) {
+    let answerArr = [];
+    for (let i = num; i < arr.length; i++) {
+      answerArr.push(arr[i]);
+    }
+    if (num === undefined) {
+     arr.shift();
+     return arr;
+    }
+    return answerArr;
+  },
+  dropWhile (array, func) {
+    let answerArray = [];
+    for (let i = 0; i < array.length; i++){
+      let falsyWait = func(array[i], i, array);
+      if (!falsyWait) {
+        for (let j = i; j < array.length; j++) {
+          answerArray.push(array[j]);
+        }
+      return answerArray;
+      }
+    }
+    return answerArray;
   }
 
  };
-
-
 
 // Do not write or modify code below this line.
 module.exports = _;
