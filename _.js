@@ -54,14 +54,13 @@ const _ = {
     }
     return wordArray;
   },
-  pad (str, length) { // just add the diff to the end, start there
+  pad (str, length, chr) {     
     let solutionArray = [];
     let diff;
     length > str.length ? diff = length - str.length : console.log('string is longer');
 
-    // padding loop 
+    // padding loop that implements .repeat()
     if (diff % 2 === 0 && str.length < length) {
-      console.log(str, length);
       for (let i = 0; i < str.length; i++) {
 
         //pad the beginning 
@@ -71,7 +70,7 @@ const _ = {
           }
         }
 
-        // make the array
+        // write the array
         solutionArray.push(str[i]);
 
         // pad the end
@@ -110,8 +109,47 @@ const _ = {
     console.log(solution);
 
     return solution;
-  } 
-};
+  },  
+
+  padEasy (string, length) {
+    if (length < string.length) {
+      return string
+    }
+
+    let startPaddingLength = Math.floor((length - string.length) / 2); 
+    let endPaddingLength = length - string.length - startPaddingLength;
+    let paddedString = ' '.repeat(startPaddingLength) + string + ' '.repeat(endPaddingLength);
+   
+    return paddedString;
+  },
+  has (obj, key) {
+    if (obj[key]) {
+      return true;
+    } else {
+      return false;
+    }
+  },
+  invert (obj) {
+    let invertedObj = {};
+    for (let key in obj) { 
+      let tmp = obj[key];
+      invertedObj[tmp] = key;
+    }
+    return invertedObj;
+  },
+  findKey (obj, boolFunc) {
+    for (let key in obj) {
+      let answer = boolFunc(obj[key]);
+      if (answer === true) {
+        return key;
+      } else {
+        return undefined
+      }
+    }
+    
+  }
+
+ };
 
 
 
