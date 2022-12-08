@@ -170,6 +170,23 @@ const _ = {
       }
     }
     return answerArray;
+  },
+  chunk (array, size) {
+    size === undefined ? size = 1 : console.log('hi');
+    let finalArray = [];
+    let solutionArray = [];
+    for (let i = 0; i < array.length; i++){
+      solutionArray.push(array[i]);
+
+      if (size === solutionArray.length) {
+        finalArray.push(solutionArray);
+        solutionArray = [];
+      } 
+      if (array[i + 1] === undefined && solutionArray[0]) {
+        finalArray.push(solutionArray);
+      }
+    }
+    return finalArray;
   }
 
  };
